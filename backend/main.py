@@ -18,7 +18,11 @@ from llm_service import LLMService
 load_dotenv()
 
 DB_PATH = os.getenv("DB_PATH", "o2c_data.db")
-DATA_ROOT = os.getenv("DATA_ROOT", "../sap-order-to-cash-dataset/sap-o2c-data")
+DATA_ROOT = os.getenv("DATA_ROOT")
+
+if not DATA_ROOT:
+    raise Exception("DATA_ROOT not set")
+
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
 
 db: Database = None

@@ -222,6 +222,9 @@ if frontend_dist.exists():
             return FileResponse(str(file_path))
         return FileResponse(str(frontend_dist / "index.html"))
 
+@app.get("/")
+def root():
+    return {"message": "SAP O2C Graph API is running 🚀"}
 
 if __name__ == "__main__":
     import uvicorn

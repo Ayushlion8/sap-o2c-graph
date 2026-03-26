@@ -142,16 +142,27 @@ class LLMService:
 
     def generate_answer(self, user_question: str, sql: str, results: list[dict]) -> str:
         """Generate natural language answer from SQL results."""
-        results_str = json.dumps(results[:50], indent=2, default=str)  # limit to 50 rows in prompt
+        # 🔥 LIMIT DATA (very important)
+        limited_results = results[:10]
+
+        # 🔥 Convert to simpler format (not heavy JSON)
+        formatted_rows = "\n".join([
+            ", ".join(f"{k}: {v}" for k, v in row.items())
+            for row in limited_results
+        ])
         user_msg = f"""Question: {user_question}
 
 SQL Query Used:
 {sql}
 
-Query Results ({len(results)} rows):
-{results_str}
+Top Results (showing {len(limited_results)} of {len(results)} rows):
+{formatted_rows}
 
-Please provide a clear, concise answer to the question based on these results."""
+Task:
+- Identify the top results
+- Highlight key insights
+- Answer clearly in 2-3 sentences
+"""
 
         return self._call_gemini(ANSWER_SYSTEM_PROMPT, user_msg, temperature=0.3)
 

@@ -8,25 +8,47 @@ echo "║          SAP O2C Graph Explorer — Startup                ║"
 echo "╚══════════════════════════════════════════════════════════╝"
 echo ""
 
-# ── ENV VARIABLES (Railway handles this) ───────────────────────────────
+# ── ENV VARIABLES ─────────────────────────────────────────────────────
 echo "🔐 Using environment variables from Railway..."
 
 if [ -z "$GEMINI_API_KEY" ]; then
   echo "⚠️  WARNING: GEMINI_API_KEY is not set"
   echo "   AI features will be disabled"
-  echo ""
+else
+  echo "✅ GEMINI_API_KEY detected"
 fi
 
+# ── DEBUG INFO (VERY USEFUL) ──────────────────────────────────────────
+echo ""
+echo "📁 Current working directory:"
+pwd
+echo ""
+echo "📂 Project structure:"
+ls
+
 # ── DATASET CHECK ─────────────────────────────────────────────────────
-DATA_DIR="${DATA_ROOT:-./data/sap-o2c-data}"
+if [ -z "$DATA_ROOT" ]; then
+  echo ""
+  echo "❌ ERROR: DATA_ROOT is not set"
+  echo "👉 Set DATA_ROOT in Railway variables"
+  exit 1
+fi
+
+DATA_DIR="$DATA_ROOT"
+
+echo ""
+echo "📂 Checking dataset at: $DATA_DIR"
 
 if [ ! -d "$DATA_DIR" ]; then
+  echo ""
   echo "❌ Dataset not found at: $DATA_DIR"
   echo ""
   echo "👉 FIX:"
-  echo "   - Ensure dataset is inside repo OR"
-  echo "   - Set correct DATA_ROOT in Railway variables"
+  echo "   - Ensure dataset exists in repo"
+  echo "   - Verify DATA_ROOT path"
   echo ""
+  echo "📂 Available folders:"
+  ls
   exit 1
 fi
 
@@ -65,6 +87,7 @@ fi
 PYTHON=python3
 
 if [ -d "venv" ]; then
+  echo "   Using existing virtualenv"
   source venv/bin/activate
   PYTHON=python
 else
@@ -88,7 +111,8 @@ echo ""
 
 cd backend
 
-# Railway provides PORT env variable
 PORT=${PORT:-8000}
+
+echo "🌐 Running on port: $PORT"
 
 $PYTHON -m uvicorn main:app --host 0.0.0.0 --port $PORT

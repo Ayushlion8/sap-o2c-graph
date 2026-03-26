@@ -6,8 +6,8 @@ A **Graph-Based Data Intelligence System** for SAP Order-to-Cash (O2C) data — 
 
 ## Live Demo
 
-🚀 **Demo:** [your-demo-link-here]
-📦 **GitHub:** [your-github-repo-here]
+🚀 **Demo:** https://sap-o2c-graph-6os4ixpob-ayushlion8s-projects.vercel.app/
+📦 **GitHub:** https://github.com/Ayushlion8/sap-o2c-graph
 
 ---
 
@@ -22,7 +22,7 @@ A **Graph-Based Data Intelligence System** for SAP Order-to-Cash (O2C) data — 
 
 ```
 ┌─────────────────────────────────────────────────────┐
-│                    Frontend (React)                  │
+│                    Frontend (React)                 │
 │   ┌──────────────────┐    ┌────────────────────┐    │
 │   │  Graph Canvas    │    │   Chat Panel       │    │
 │   │  (vis-network)   │    │   (NL interface)   │    │
@@ -30,7 +30,7 @@ A **Graph-Based Data Intelligence System** for SAP Order-to-Cash (O2C) data — 
 └─────────────────┬───────────────────────────────────┘
                   │ HTTP/REST
 ┌─────────────────▼───────────────────────────────────┐
-│                    Backend (FastAPI)                  │
+│                    Backend (FastAPI)                │
 │  ┌────────────┐  ┌──────────────┐  ┌─────────────┐  │
 │  │  Graph     │  │  LLM Service │  │  Database   │  │
 │  │  Service   │  │  (Gemini)    │  │  (SQLite)   │  │

@@ -75,18 +75,24 @@ export default function GraphCanvas({ onHighlightNodes }) {
       observer.disconnect()
 
     const options = {
+      layout: {
+        improvedLayout: true,
+      },
+
       physics: {
         enabled: true,
         solver: 'forceAtlas2Based',
+
         forceAtlas2Based: {
-          gravitationalConstant: -260,   // 🔥 more spacing
-          centralGravity: 0.008,
-          springLength: 220,             // 🔥 spread nodes further
-          springConstant: 0.03,
-          damping: 0.7,
+          gravitationalConstant: -220,
+          centralGravity: 0.015,     // 🔥 pulls graph to center nicely
+          springLength: 200,
+          springConstant: 0.04,
+          damping: 0.75,
         },
+
         stabilization: {
-          iterations: 200,
+          iterations: 250,
           updateInterval: 25,
         },
       },
@@ -101,23 +107,30 @@ export default function GraphCanvas({ onHighlightNodes }) {
       edges: {
         smooth: {
           type: 'dynamic',
-          roundness: 0.4,
+          roundness: 0.35,
         },
 
         width: 1.2,
 
         color: {
-          color: 'rgba(148,163,184,0.35)',   // 🔥 subtle edges
-          highlight: '#94A3B8',
+          color: 'rgba(148,163,184,0.35)',
+          highlight: '#cbd5f5',
         },
 
         font: {
           size: 11,
-          color: 'rgba(220,220,220,0.75)',   // 🔥 readable but not bright
-          strokeWidth: 3,                    // 🔥 key fix
-          strokeColor: 'rgba(0,0,0,0.8)',    // glow effect for contrast
+          color: 'rgba(230,230,230,0.8)',
+          strokeWidth: 3,
+          strokeColor: 'rgba(0,0,0,0.9)',  // 🔥 stronger contrast
           align: 'middle',
         },
+
+        arrows: {
+          to: {
+            enabled: true,
+            scaleFactor: 0.55,
+          }
+        }
       },
 
       nodes: {
@@ -126,16 +139,16 @@ export default function GraphCanvas({ onHighlightNodes }) {
 
         font: {
           size: 12,
-          color: '#E2E8F0',                  // 🔥 cleaner text
+          color: '#E2E8F0',
           face: 'Inter, system-ui, sans-serif',
         },
 
         shadow: {
           enabled: true,
-          size: 10,                          // 🔥 softer shadow
+          size: 12,
           x: 0,
-          y: 4,
-          color: 'rgba(0,0,0,0.4)',
+          y: 5,
+          color: 'rgba(0,0,0,0.45)',
         },
       },
     }

@@ -18,7 +18,7 @@ else
   echo "✅ GEMINI_API_KEY detected"
 fi
 
-# ── DEBUG INFO (VERY USEFUL) ──────────────────────────────────────────
+# ── DEBUG INFO ────────────────────────────────────────────────────────
 echo ""
 echo "📁 Current working directory:"
 pwd
@@ -54,26 +54,6 @@ fi
 
 echo "✅ Dataset found at: $DATA_DIR"
 
-# ── FRONTEND BUILD ────────────────────────────────────────────────────
-echo ""
-echo "📦 Building frontend..."
-cd frontend
-
-if ! command -v node &>/dev/null; then
-  echo "❌ Node.js is not installed."
-  exit 1
-fi
-
-if [ ! -d "node_modules" ]; then
-  echo "   Installing npm packages..."
-  npm install --silent
-fi
-
-npm run build
-echo "✅ Frontend built."
-
-cd ..
-
 # ── BACKEND SETUP ─────────────────────────────────────────────────────
 echo ""
 echo "🐍 Setting up Python backend..."
@@ -100,16 +80,12 @@ fi
 echo "   Installing Python packages..."
 pip install -q -r requirements.txt
 
-cd ..
-
 # ── START SERVER ──────────────────────────────────────────────────────
 echo ""
 echo "╔══════════════════════════════════════════════════════════╗"
-echo "║  🚀  Starting server                                    ║"
+echo "║  🚀  Starting backend server                            ║"
 echo "╚══════════════════════════════════════════════════════════╝"
 echo ""
-
-cd backend
 
 PORT=${PORT:-8000}
 

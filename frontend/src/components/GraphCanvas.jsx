@@ -79,11 +79,11 @@ export default function GraphCanvas({ onHighlightNodes }) {
           enabled: true,
           solver: 'forceAtlas2Based',
           forceAtlas2Based: {
-            gravitationalConstant: -60,
-            centralGravity: 0.008,
-            springLength: 130,
-            springConstant: 0.04,
-            damping: 0.5,
+            gravitationalConstant: -180,
+            centralGravity: 0.01,
+            springLength: 180,
+            springConstant: 0.035,
+            damping: 0.6,
           },
           stabilization: { iterations: 150, updateInterval: 30 },
         },
@@ -92,7 +92,7 @@ export default function GraphCanvas({ onHighlightNodes }) {
         nodes: {
           borderWidth: 2,
           size: 30,
-          font: { size: 11, color: '#F1F5F9', face: 'system-ui,sans-serif' },
+          font: { size: 11, color: 'rgba(200,200,200,0.7)', strokeColor: 'rgba(0,0,0,0.6)', face: 'system-ui,sans-serif' },
           shadow: { enabled: true, size: 6, x: 2, y: 2, color: 'rgba(0,0,0,0.5)' },
         },
       }

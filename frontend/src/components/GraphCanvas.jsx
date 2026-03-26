@@ -85,7 +85,7 @@ export default function GraphCanvas({ onHighlightNodes }) {
 
         forceAtlas2Based: {
           gravitationalConstant: -220,
-          centralGravity: 0.015,     // 🔥 pulls graph to center nicely
+          centralGravity: 0.015,
           springLength: 200,
           springConstant: 0.04,
           damping: 0.75,
@@ -118,11 +118,12 @@ export default function GraphCanvas({ onHighlightNodes }) {
         },
 
         font: {
-          size: 11,
-          color: 'rgba(230,230,230,0.8)',
-          strokeWidth: 3,
-          strokeColor: 'rgba(0,0,0,0.9)',  // 🔥 stronger contrast
+          size: 14,
+          color: '#FFFFFF',
+          strokeWidth: 4,
+          strokeColor: 'rgba(0,0,0,0.95)',
           align: 'middle',
+          vadjust: -2,
         },
 
         arrows: {

@@ -33,7 +33,7 @@ async def lifespan(app: FastAPI):
     print("🚀 Starting SAP O2C Graph System...")
 
     # Load data if DB doesn't exist or is empty
-    if not os.path.exists(DB_PATH) or os.path.getsize(DB_PATH) < 1000:
+    if True:
         print(f"📦 Loading data from {DATA_ROOT}...")
         if os.path.exists(DATA_ROOT):
             counts = load_all_data(DB_PATH, DATA_ROOT)

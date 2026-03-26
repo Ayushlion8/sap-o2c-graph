@@ -9,7 +9,7 @@ A **Graph-Based Data Intelligence System** for SAP Order-to-Cash (O2C) data — 
 ## 🌐 Live Demo
 
 🚀 **Frontend (Vercel):**  
-https://sap-o2c-graph-6os4ixpob-ayushlion8s-projects.vercel.app
+https://sap-o2c-graph-git-main-ayushlion8s-projects.vercel.app
 
 ⚙️ **Backend API (Railway):**  
 https://sap-o2c-graph-production.up.railway.app

@@ -74,28 +74,71 @@ export default function GraphCanvas({ onHighlightNodes }) {
       initialized = true
       observer.disconnect()
 
-      const options = {
-        physics: {
+    const options = {
+      physics: {
+        enabled: true,
+        solver: 'forceAtlas2Based',
+        forceAtlas2Based: {
+          gravitationalConstant: -260,   // 🔥 more spacing
+          centralGravity: 0.008,
+          springLength: 220,             // 🔥 spread nodes further
+          springConstant: 0.03,
+          damping: 0.7,
+        },
+        stabilization: {
+          iterations: 200,
+          updateInterval: 25,
+        },
+      },
+
+      interaction: {
+        hover: true,
+        tooltipDelay: 200,
+        zoomView: true,
+        dragView: true,
+      },
+
+      edges: {
+        smooth: {
+          type: 'dynamic',
+          roundness: 0.4,
+        },
+
+        width: 1.2,
+
+        color: {
+          color: 'rgba(148,163,184,0.35)',   // 🔥 subtle edges
+          highlight: '#94A3B8',
+        },
+
+        font: {
+          size: 11,
+          color: 'rgba(220,220,220,0.75)',   // 🔥 readable but not bright
+          strokeWidth: 3,                    // 🔥 key fix
+          strokeColor: 'rgba(0,0,0,0.8)',    // glow effect for contrast
+          align: 'middle',
+        },
+      },
+
+      nodes: {
+        borderWidth: 2,
+        size: 28,
+
+        font: {
+          size: 12,
+          color: '#E2E8F0',                  // 🔥 cleaner text
+          face: 'Inter, system-ui, sans-serif',
+        },
+
+        shadow: {
           enabled: true,
-          solver: 'forceAtlas2Based',
-          forceAtlas2Based: {
-            gravitationalConstant: -180,
-            centralGravity: 0.01,
-            springLength: 180,
-            springConstant: 0.035,
-            damping: 0.6,
-          },
-          stabilization: { iterations: 150, updateInterval: 30 },
+          size: 10,                          // 🔥 softer shadow
+          x: 0,
+          y: 4,
+          color: 'rgba(0,0,0,0.4)',
         },
-        interaction: { hover: true, tooltipDelay: 300, zoomView: true, dragView: true },
-        edges: { smooth: { type: 'dynamic' }, width: 1.5, selectionWidth: 3 },
-        nodes: {
-          borderWidth: 2,
-          size: 30,
-          font: { size: 11, color: 'rgba(200,200,200,0.7)', strokeColor: 'rgba(0,0,0,0.6)', face: 'system-ui,sans-serif' },
-          shadow: { enabled: true, size: 6, x: 2, y: 2, color: 'rgba(0,0,0,0.5)' },
-        },
-      }
+      },
+    }
 
       networkRef.current = new Network(
         canvasRef.current,

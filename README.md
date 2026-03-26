@@ -11,10 +11,23 @@ A **Graph-Based Data Intelligence System** for SAP Order-to-Cash (O2C) data — 
 
 ---
 
-## Screenshots
+## 📊 Graph-Based Exploration
 
-> Graph overview showing O2C entity types and their relationships  
-> Chat interface with NL → SQL → NL response pipeline
+Explore SAP Order-to-Cash relationships visually.
+
+<p align="center">
+  <img src="./assets/graph-overview.png" width="800"/>
+</p>
+
+---
+
+## 🤖 Natural Language Querying (LLM Powered)
+
+Convert business questions into SQL automatically.
+
+<p align="center">
+  <img src="./assets/ai-query.png" width="800"/>
+</p>
 
 ---
 
